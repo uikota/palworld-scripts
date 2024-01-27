@@ -23,7 +23,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/palworld/.steam/SteamApps/common/PalServer/
+WorkingDirectory=${INSTALL_DIR}/
 LimitNOFILE=100000
 User=palworld
 
