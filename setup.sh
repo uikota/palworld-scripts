@@ -16,7 +16,7 @@ tar -xvzf rcon-0.10.3-amd64_linux.tar.gz --strip-components=1
 rm -f rcon-0.10.3-amd64_linux.tar.gz
 
 # systemctlに登録
-cat <<EOF > /etc/systemd/system/palworld.service
+cat <<EOF > ~/.config/systemd/user/palworld.service
 [Unit]
 Description=palworld
 After=network-online.target
@@ -25,7 +25,6 @@ After=network-online.target
 Type=simple
 WorkingDirectory=${INSTALL_DIR}/
 LimitNOFILE=100000
-User=palworld
 
 ExecStartPre=/usr/games/steamcmd +login anonymous +app_update 2394010 validate +quit
 ExecStart=/bin/bash -c "./PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS"
@@ -36,8 +35,8 @@ RestartSec=30
 TimeoutSec=600
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF
 
-systemctl daemon-reload
-sudo systemctl enable palworld.service
+systemctl ${SYSTEMCTL_PARAM} daemon-reload
+systemctl ${SYSTEMCTL_PARAM} enable palworld.service
