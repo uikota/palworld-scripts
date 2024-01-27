@@ -23,12 +23,12 @@ After=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=${INSTALL_DIR}/
+WorkingDirectory=/home/palworld/.steam/SteamApps/common/PalServer/
 LimitNOFILE=100000
 User=palworld
 
 ExecStartPre=/usr/games/steamcmd +login anonymous +app_update 2394010 validate +quit
-ExecStart=/bin/bash -c "./PalServer.sh"
+ExecStart=/bin/bash -c "./PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS"
 ExecStop=/bin/kill -s INT \$MAINPID
 
 Restart=on-failure
