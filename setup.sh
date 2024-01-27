@@ -16,6 +16,7 @@ tar -xvzf rcon-0.10.3-amd64_linux.tar.gz --strip-components=1
 rm -f rcon-0.10.3-amd64_linux.tar.gz
 
 # systemctlに登録
+mkdir -p ~/.config/systemd/user
 cat <<EOF > ~/.config/systemd/user/palworld.service
 [Unit]
 Description=palworld
