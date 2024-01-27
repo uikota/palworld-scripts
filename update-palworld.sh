@@ -1,6 +1,10 @@
 #!/bin/sh
 
-. ./env.sh
+
+SCRIPT_PATH=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+
+. "${SCRIPT_DIR}/env.sh"
 
 ${RCON_DIR}/rcon -a "localhost:25575" -p ${ADMIN_PASSWORD} "Broadcast Checking_for_updates..."
 
