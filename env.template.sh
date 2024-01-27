@@ -13,4 +13,7 @@ export UPDATE_DIR="${HOME_DIR}/update/PalServer"
 export BACKUP_DIR="${HOME_DIR}/backup"
 export ADMIN_PASSWORD="ここにパスワード"
 
+# AWS EC2の場合は--userを指定する必要があります。
+export SYSTEMCTL_PARAM=""
+
 echo ${HOME_DIR}
