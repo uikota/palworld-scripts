@@ -29,9 +29,9 @@ else
     ${RCON_DIR}/rcon -a "localhost:25575" -p ${ADMIN_PASSWORD} "Broadcast Update_found.The_server_will_restart_after_5_minutes.Please_update_client."
     sleep 300
     # サーバー停止
-    systemctl stop palworld.service
+    systemctl ${SYSTEMCTL_PARAM} stop palworld.service
     # サーバーアップデート
     steamcmd +force_install_dir ${INSTALL_DIR} +login anonymous +app_update 2394010 validate +quit > /dev/null
     # サーバー起動
-    systemctl start palworld.service
+    systemctl ${SYSTEMCTL_PARAM} start palworld.service
 fi
