@@ -12,5 +12,5 @@ ${RCON_DIR}/rcon -a "localhost:25575" -p ${ADMIN_PASSWORD} "Broadcast The_server
 sleep 300
 
 # サーバー再起動
-systemctl stop palworld.service
-systemctl start palworld.service
+systemctl ${SYSTEMCTL_PARAM} stop palworld.service
+systemctl ${SYSTEMCTL_PARAM} start palworld.service
