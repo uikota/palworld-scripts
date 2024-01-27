@@ -1,0 +1,8 @@
+# palworld restart
+55 11 * * * /home/palworld/palworld-scripts/restart-palworld.sh
+
+# palworld backup
+0,30 * * * * /home/palworld/palworld-scripts/backup-palworld.sh
+
+# palworld update check
+0 */3 * * * /home/palworld/palworld-scripts/update-palworld.sh
