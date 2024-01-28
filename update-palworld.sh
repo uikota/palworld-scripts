@@ -9,7 +9,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 ${RCON_DIR}/rcon -a "localhost:25575" -p ${ADMIN_PASSWORD} "Broadcast Checking_for_updates..."
 
 echo "現在のバージョン確認中"
-OLD_BUILD=`steamcmd +force_install_dir ${INSTALL_DIR} +login anonymous +app_status 2394010 +quit | grep -e "BuildID" | awk '{print $8}'`
+OLD_BUILD=`steamcmd +login anonymous +app_status 2394010 +quit | grep -e "BuildID" | awk '{print $8}'`
 echo "Old BuildID: ${OLD_BUILD}"
 
 echo "アップデート中"
@@ -31,7 +31,7 @@ else
     # サーバー停止
     systemctl ${SYSTEMCTL_PARAM} stop palworld.service
     # サーバーアップデート
-    steamcmd +force_install_dir ${INSTALL_DIR} +login anonymous +app_update 2394010 validate +quit > /dev/null
+    steamcmd +login anonymous +app_update 2394010 validate +quit > /dev/null
     # サーバー起動
     systemctl ${SYSTEMCTL_PARAM} start palworld.service
 fi
